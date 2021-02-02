@@ -82,12 +82,15 @@ export default function ListMusics({ albums, album, setAlbum, onMusic, token }) 
   }, [data.data])
 
   useEffect(() => {
-    let text = album[1].description
-    let cutStart = text.indexOf("<a");
-    let cutEnd = text.indexOf("</a>");
-    let tag = text.slice(cutStart, cutEnd+4);
-    album[1].description = text.replace(tag, "...")
-    console.log(tag)
+    
+    if(album[1].description){
+      let text = album[1].description
+      let cutStart = text.indexOf("<a");
+      let cutEnd = text.indexOf("</a>");
+      let tag = text.slice(cutStart, cutEnd+4);
+      album[1].description = text.replace(tag, "...")
+      console.log(tag)
+    }
   }, [album[1]])
 
   const renderList = () => {
